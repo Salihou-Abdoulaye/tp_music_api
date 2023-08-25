@@ -2,11 +2,11 @@ const { mongoose, Schema } = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema({
-    firstName: {type: String, required: ture},
-    lastName: {type: String, required: ture},
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: {default: 2, required: ture, type:Number},
+    role: {default: 2, required: true, type:Number},
 })
 userSchema.methods.hashPassword = async function () {
    this.password = await bcrypt.hash(this.password, 10);
